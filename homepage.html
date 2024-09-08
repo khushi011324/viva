@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorJet Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff9900;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 120px; /* Adjust the height as desired */
+            margin-right: 200px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .left-column,
+        .right-column {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr; /* Set grid to display 1 item per row */
+            gap: 20px;
+        }
+
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product img {
+            width: 100%;
+            height: 250px; /* Set a fixed height for all images */
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .product h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .product .price {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .product .coupon-price {
+            font-size: 14px;
+            color: green;
+            margin-bottom: 15px;
+        }
+
+        .product button {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .product button:hover {
+            background-color: #e68a00;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-content .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-content .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .footer-content .social-links a:hover {
+            color: #ff9900;
+        }
+
+        .footer-content .contact-info {
+            font-size: 14px;
+        }
+
+        .footer-content .contact-info a {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-content .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="FlavorJet Logo">
+            </div>
+            <nav class="nav">
+                <a href="cart.html">Cart</a>
+                <a href="events.html">Events</a>  <!-- Link to the Event page -->
+                <a href="blog.html">Blogs</a>      <!-- Link to the Blog page -->
+                <a href="reviews.html">Reviews</a>
+            </nav>
+        </div>
+        <h1>Order Your Favorite Meals</h1>
+    </header>
+
+    <div class="container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <div class="product-container">
+                <div class="product">
+                    <img src="images/product1.jpg" alt="Product 1">
+                    <h2>Pizza</h2>
+                    <p class="price">$12.00</p>
+                    <p class="coupon-price">Save $2.40 (20% Off for New Users)</p>
+                    <button onclick="addToCart(1)">Add to Cart</button>
+                    <button onclick="giftCoupon(1)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product2.jpg" alt="Product 2">
+                    <h2>Burger</h2>
+                    <p class="price">$8.00</p>
+                    <p class="coupon-price">Save $1.60 (20% Off for New Users)</p>
+                    <button onclick="addToCart(2)">Add to Cart</button>
+                    <button onclick="giftCoupon(2)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product3.jpg" alt="Product 3">
+                    <h2>Pasta</h2>
+                    <p class="price">$10.00</p>
+                    <p class="coupon-price">Save $2.00 (20% Off for New Users)</p>
+                    <button onclick="addToCart(3)">Add to Cart</button>
+                    <button onclick="giftCoupon(3)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product4.jpg" alt="Product 4">
+                    <h2>Sushi</h2>
+                    <p class="price">$15.00</p>
+                    <p class="coupon-price">Save $3.00 (20% Off for New Users)</p>
+                    <button onclick="addToCart(4)">Add to Cart</button>
+                    <button onclick="giftCoupon(4)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product5.jpg" alt="Product 5">
+                    <h2>Salad</h2>
+                    <p class="price">$7.00</p>
+                    <p class="coupon-price">Save $1.40 (20% Off for New Users)</p>
+                    <button onclick="addToCart(5)">Add to Cart</button>
+                    <button onclick="giftCoupon(5)">Gift Coupon</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <div class="product-container">
+                <div class="product">
+                    <img src="images/product6.jpg" alt="Product 6">
+                    <h2>Steak</h2>
+                    <p class="price">$20.00</p>
+                    <p class="coupon-price">Save $4.00 (20% Off for New Users)</p>
+                    <button onclick="addToCart(6)">Add to Cart</button>
+                    <button onclick="giftCoupon(6)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product7.jpg" alt="Product 7">
+                    <h2>Tacos</h2>
+                    <p class="price">$6.00</p>
+                    <p class="coupon-price">Save $1.20 (20% Off for New Users)</p>
+                    <button onclick="addToCart(7)">Add to Cart</button>
+                    <button onclick="giftCoupon(7)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product8.jpg" alt="Product 8">
+                    <h2>Ice Cream</h2>
+                    <p class="price">$5.00</p>
+                    <p class="coupon-price">Save $1.00 (20% Off for New Users)</p>
+                    <button onclick="addToCart(8)">Add to Cart</button>
+                    <button onclick="giftCoupon(8)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product9.jpg" alt="Product 9">
+                    <h2>Sandwich</h2>
+                    <p class="price">$9.00</p>
+                    <p class="coupon-price">Save $1.80 (20% Off for New Users)</p>
+                    <button onclick="addToCart(9)">Add to Cart</button>
+                    <button onclick="giftCoupon(9)">Gift Coupon</button>
+                </div>
+                <div class="product">
+                    <img src="images/product10.jpg" alt="Product 10">
+                    <h2>Fries</h2>
+                    <p class="price">$4.00</p>
+                    <p class="coupon-price">Save $0.80 (20% Off for New Users)</p>
+                    <button onclick="addToCart(10)">Add to Cart</button>
+                    <button onclick="giftCoupon(10)">Gift Coupon</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 FlavorJet. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+            <div class="contact-info">
+                <p>Contact us at <a href="mailto:support@flavorjet.com">support@flavorjet.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                const response = await fetch('http://localhost:3002/getMaxCoupon');
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    const maxCoupon = data.maxCoupon;
+
+                    const products = [
+                        { id: 1, name: 'Pizza', price: 12.00, image: 'images/product1.jpg' },
+                        { id: 2, name: 'Burger', price: 8.00, image: 'images/product2.jpg' },
+                        { id: 3, name: 'Pasta', price: 10.00, image: 'images/product3.jpg' },
+                        { id: 4, name: 'Sushi', price: 15.00, image: 'images/product4.jpg' },
+                        { id: 5, name: 'Salad', price: 7.00, image: 'images/product5.jpg' },
+                        { id: 6, name: 'Steak', price: 20.00, image: 'images/product6.jpg' },
+                        { id: 7, name: 'Tacos', price: 6.00, image: 'images/product7.jpg' },
+                        { id: 8, name: 'Ice Cream', price: 5.00, image: 'images/product8.jpg' },
+                        { id: 9, name: 'Sandwich', price: 9.00, image: 'images/product9.jpg' },
+                        { id: 10, name: 'Fries', price: 4.00, image: 'images/product10.jpg' }
+                    ];
+
+                    const leftColumn = document.querySelector('.left-column .product-container');
+                    const rightColumn = document.querySelector('.right-column .product-container');
+
+                    products.forEach(product => {
+                        const productDiv = document.createElement('div');
+                        productDiv.className = 'product';
+                        productDiv.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}">
+                            <h2>${product.name}</h2>
+                            <p class="price">$${product.price.toFixed(2)}</p>
+                            <p class="coupon-price">Save $${(maxCoupon.discount).toFixed(2)} (${maxCoupon.discountPercentage}% Off for New Users)</p>
+                            <button onclick="addToCart(${product.id})">Add to Cart</button>
+                            <button onclick="giftCoupon(${product.id})">Gift Coupon</button>
+                        `;
+                        if (product.id <= 5) {
+                            leftColumn.appendChild(productDiv);
+                        } else {
+                            rightColumn.appendChild(productDiv);
+                        }
+                    });
+
+                } else {
+                    console.log('No coupons available');
+                }
+            } catch (error) {
+                console.error('Error fetching coupon data:', error);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

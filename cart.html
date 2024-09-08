@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff9900;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 120px;
+            margin-right: 20px; /* Reduced margin for better alignment */
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        #cart {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item h2 {
+            font-size: 18px;
+            margin: 0;
+            color: #333;
+        }
+
+        .cart-item p {
+            margin: 0;
+            color: #333;
+        }
+
+        .cart-item .price {
+            font-weight: bold;
+        }
+
+        .cart-item .coupon-price {
+            color: #ff9900;
+            font-weight: bold;
+        }
+
+        #checkout {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #checkout:hover {
+            background-color: #cc7a00;
+        }
+
+        #total-price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #empty-cart {
+            display: none;
+            font-size: 18px;
+            color: #ff9900;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="FlavorJet Logo">
+                <h1>FlavorJet</h1>
+            </div>
+            <nav class="nav">
+                <a href="homepage.html">Home</a>
+                <a href="cart.html">Cart</a>
+                <a href="events.html">Events</a>
+                <a href="blog.html">Blogs</a>
+                <a href="reviews.html">Reviews</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="cart">
+            <!-- Cart items will be dynamically added here -->
+            <div id="empty-cart">Your cart is empty.</div>
+            <!-- Example cart item, should be dynamically generated -->
+            <div class="cart-item">
+                <h2>Product Name</h2>
+                <p class="price">$50.00</p>
+                <p class="coupon-price">After Coupon: $</p>
+            </div>
+        </section>
+        <p>Grand Total: <span id="total-price">$0.00</span></p>
+        <button id="checkout">Checkout</button>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                const response = await fetch('http://localhost:3002/getMaxCoupon');
+                const data = await response.json();
+
+                if (response.ok) {
+                    const maxCoupon = data.maxCoupon;
+
+                    // Example cart data, should be fetched dynamically
+                    const cartItems = document.querySelectorAll('.cart-item');
+                    
+                    if (cartItems.length === 0) {
+                        document.getElementById('empty-cart').style.display = 'block';
+                        return;
+                    }
+
+                    let total = 0;
+                    cartItems.forEach(item => {
+                        const priceElement = item.querySelector('.price');
+                        const couponPriceElement = item.querySelector('.coupon-price');
+
+                        const originalPrice = parseFloat(priceElement.innerText.replace('$', ''));
+                        const discount = maxCoupon ? maxCoupon.discount : 0;
+
+                        const discountedPrice = Math.max(0, originalPrice - discount);
+                        couponPriceElement.innerText = `After Coupon: $${discountedPrice.toFixed(2)}`;
+
+                        total += discountedPrice;
+                    });
+
+                    document.getElementById('total-price').innerText = `$${total.toFixed(2)}`;
+                } else {
+                    console.log('No coupons available or error fetching data');
+                }
+            } catch (error) {
+                console.error('Error fetching coupon data:', error);
+            }
+        });
+    </script>
+</body>
+
+</html>

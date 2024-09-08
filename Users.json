@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "tanya",
+    "email": "tanya1@gmail.com",
+    "password": "$2a$08$094FAi49kANSDr.Yrk6lBOTsXsZFDmPUdbcTXay5Q5TrxJPUr8vWa"
+  },
+  {
+    "id": 2,
+    "name": "Sakshi",
+    "email": "abc@gamil.com",
+    "password": "$2a$08$CfYAkCYvnCC0zOzsVnA6T.vZvEIt1latIgJOwR.ZNTjUyCIkWaty."
+  },
+  {
+    "id": 3,
+    "name": "Jack",
+    "email": "jack@gamil.com",
+    "password": "$2a$08$c.IDXZ95HnmnpgWxY3yV4eL0.MKhYJl9r1bfKjHXLWnndnWddm9KW"
+  },
+  {
+    "id": 4,
+    "name": "Rydham",
+    "email": "rydhamp@gmail.com",
+    "password": "$2a$08$QgBqq4G5xVe7RZJ6waNZxeYtbEQ9TgLZ3ghOwoE2VDbQU.RPZVIQ6"
+  },
+  {
+    "id": 5,
+    "name": "helper",
+    "email": "helper@gmail.com",
+    "password": "$2a$08$J26a/k9o/Vxr0B/KMaxpZOzdXcqh../E6tOVyz4Ubt.mXeTl9Nghq"
+  }
+]
